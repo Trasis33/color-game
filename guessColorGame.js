@@ -1,21 +1,47 @@
-// Array of 6 colors
-var colors = generateRandomColors(6)
-// selects all divs of class square
+var numOfSquares = 6
+var colors = generateRandomColors(numOfSquares)
 var squares = document.querySelectorAll(".square")
-// picks winnig color-value
 var pickedColor = pickColor();
-//insert the wanted color into title
 var colorDisplay = document.getElementById("colorDisplay")
-
 var messageDisplay = document.querySelector("#message")
-
 var h1 = document.querySelector("h1")
-
 var resetBtn = document.querySelector("#reset")
+var easyBtn = document.querySelector("#easyBtn")
+var hardBtn = document.querySelector("#hardBtn")
+
+
+easyBtn.addEventListener("click", function() {
+    hardBtn.classList.remove("selected")
+    easyBtn.classList.add("selected")
+    numOfSquares = 3
+    colors = generateRandomColors(numOfSquares)
+    pickedColor = pickColor()
+    colorDisplay.textContent = pickedColor;
+    for (var i = 0; i < squares.length; i++) {
+        if (colors[i]) {
+            squares[i].style.background = colors[i]
+        } else {
+            squares[i].style.display = "none"
+        }
+    }
+})
+hardBtn.addEventListener("click", function () {
+    hardBtn.classList.add("selected")
+    easyBtn.classList.remove("selected")
+    numOfSquares = 6
+    colors = generateRandomColors(numOfSquares)
+    pickedColor = pickColor()
+    colorDisplay.textContent = pickedColor;
+    for (var i = 0; i < squares.length; i++) {
+            squares[i].style.background = colors[i]
+            squares[i].style.display = "block"
+
+    }
+})
 
 resetBtn.addEventListener("click", function() {
     //generate new colors
-    colors = generateRandomColors(6)
+    colors = generateRandomColors(numOfSquares)
     // pick new rand color
     pickedColor = pickColor()
     //change colorDisplay to match picked color
