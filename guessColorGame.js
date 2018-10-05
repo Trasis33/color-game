@@ -9,7 +9,6 @@ var resetBtn = document.querySelector("#reset")
 var easyBtn = document.querySelector("#easyBtn")
 var hardBtn = document.querySelector("#hardBtn")
 
-
 easyBtn.addEventListener("click", function() {
     hardBtn.classList.remove("selected")
     easyBtn.classList.add("selected")
@@ -25,6 +24,7 @@ easyBtn.addEventListener("click", function() {
         }
     }
 })
+
 hardBtn.addEventListener("click", function () {
     hardBtn.classList.add("selected")
     easyBtn.classList.remove("selected")
@@ -50,12 +50,12 @@ resetBtn.addEventListener("click", function() {
     for (var i = 0; i < squares.length; i++) {
         squares[i].style.background = colors[i]
     }
-    h1.style.background = "#232323"
+    h1.style.background = "steelblue"
     resetBtn.textContent = "New Colors"
+    messageDisplay.textContent = ""
 })
 
 colorDisplay.textContent = pickedColor
-
 
 //loops through squares and assigns rgb value from colors-array, adds event listeners and guess check
 for (var i = 0; i < squares.length; i++) {
