@@ -16,6 +16,7 @@ easyBtn.addEventListener("click", function() {
     colors = generateRandomColors(numOfSquares)
     pickedColor = pickColor()
     colorDisplay.textContent = pickedColor;
+    messageDisplay.textContent = ""
     for (var i = 0; i < squares.length; i++) {
         if (colors[i]) {
             squares[i].style.background = colors[i]
@@ -32,9 +33,10 @@ hardBtn.addEventListener("click", function () {
     colors = generateRandomColors(numOfSquares)
     pickedColor = pickColor()
     colorDisplay.textContent = pickedColor;
+    messageDisplay.textContent = ""
     for (var i = 0; i < squares.length; i++) {
-            squares[i].style.background = colors[i]
-            squares[i].style.display = "block"
+        squares[i].style.background = colors[i]
+        squares[i].style.display = "block"
 
     }
 })
