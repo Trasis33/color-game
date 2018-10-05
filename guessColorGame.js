@@ -11,6 +11,23 @@ var messageDisplay = document.querySelector("#message")
 
 var h1 = document.querySelector("h1")
 
+var resetBtn = document.querySelector("#reset")
+
+resetBtn.addEventListener("click", function() {
+    //generate new colors
+    colors = generateRandomColors(6)
+    // pick new rand color
+    pickedColor = pickColor()
+    //change colorDisplay to match picked color
+    colorDisplay.textContent = pickedColor
+    //change colors of squares
+    for (var i = 0; i < squares.length; i++) {
+        squares[i].style.background = colors[i]
+    }
+    h1.style.background = "#232323"
+    resetBtn.textContent = "New Colors"
+})
+
 colorDisplay.textContent = pickedColor
 
 
@@ -28,6 +45,7 @@ for (var i = 0; i < squares.length; i++) {
         //compare color to picked color, removes wrong colors and displays result
         if (clickedColor === pickedColor) {
             messageDisplay.textContent = "Correct!"
+            resetBtn.textContent = "Play Again?"
             changeColors(clickedColor)
             h1.style.background = clickedColor
         } else {
@@ -45,6 +63,7 @@ function changeColors(color) {
 }
 
 function pickColor() {
+    //generates rand nbr, returns color @ rand nbr pos
     var random = Math.floor(Math.random() * colors.length)
     return colors[random]
 }
